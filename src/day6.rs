@@ -91,12 +91,12 @@ mod tests {
 
     const SAMPLE: &str = indoc! {"Time:      7  15   30\nDistance:  9  40  200"};
     #[test]
-    fn test_example1() {
+    fn part1_example() {
         assert_eq!(part1(&parse_input(SAMPLE)), 288);
     }
 
     #[test]
-    fn test_example2() {
+    fn part2_example() {
         assert_eq!(part2(&parse_input_single_race(SAMPLE)), 71503);
     }
 }
