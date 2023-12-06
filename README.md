@@ -12,13 +12,14 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 <tr><th>Day</th><th>Part 1 Performance</th><th>Part 2 Performance</th></tr>
 <tr><td>
 
-|   D   | Puzzle                                                        |           Code           |
-| :---: | ------------------------------------------------------------- |:------------------------:|
-|   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)            | [`day1.rs`](src/day1.rs) |
-|   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2)         | [`day2.rs`](src/day2.rs) |
-|   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)            | [`day3.rs`](src/day3.rs) |
-|   4   | [Scratchcards](https://adventofcode.com/2023/day/4)           | [`day4.rs`](src/day4.rs) |
-|   5   | [If You Give A Seed ...](https://adventofcode.com/2023/day/5) | [`day5.rs`](src/day5.rs) |
+| D | Puzzle                                                        |           Code           |
+|:-:|---------------------------------------------------------------|:------------------------:|
+| 1 | [Trebuchet?!](https://adventofcode.com/2023/day/1)            | [`day1.rs`](src/day1.rs) |
+| 2 | [Cube Conundrum](https://adventofcode.com/2023/day/2)         | [`day2.rs`](src/day2.rs) |
+| 3 | [Gear Ratios](https://adventofcode.com/2023/day/3)            | [`day3.rs`](src/day3.rs) |
+| 4 | [Scratchcards](https://adventofcode.com/2023/day/4)           | [`day4.rs`](src/day4.rs) |
+| 5 | [If You Give A Seed ...](https://adventofcode.com/2023/day/5) | [`day5.rs`](src/day5.rs) |
+| 6 | [Wait For It](https://adventofcode.com/2023/day/6)            | [`day6.rs`](src/day6.rs) |
 
 </td><td>
 
@@ -29,16 +30,18 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 17.093 µs  | 187.094 µs |
 | 228.981 µs | 28.705 µs  |
 | 182.395 µs |  6.131 µs  |
+|  7.193 µs  |  1.884 µs  |
 
 </td><td>
 
-| Generator |   Runner   |
-|:---------:|:----------:|
-| 1.583 µs  |  1.228 ms  |
-| 1.032 µs  | 170.803 µs |
-|  791 ns   | 113.365 µs |
-| 185.64 µs | 904.499 ms |
-| 18.124 µs |  3.927 s   |
+| Generator  |   Runner   |
+|:----------:|:----------:|
+|  1.583 µs  |  1.228 ms  |
+|  1.032 µs  | 170.803 µs |
+|   791 ns   | 113.365 µs |
+| 185.64 µs  | 904.499 ms |
+| 18.124 µs  |  3.927 s   |
+|  2.846 µs  | 27.332 ms  |
 
 </td></tr>
 </table>
