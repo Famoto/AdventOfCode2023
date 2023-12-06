@@ -1,7 +1,6 @@
 use aoc_runner_derive::{aoc, aoc_generator};
 use itertools::Itertools;
 use rayon::prelude::*;
-use smallvec::SmallVec;
 use std::ops::Range;
 
 mod utils {
@@ -84,8 +83,8 @@ fn part2(almanac: &utils::Almanac) -> u64 {
         .map(|(start, end)| {
             let seed_range = start..end;
             let mut cache = (
-                SmallVec::<[usize; 7]>::from_elem(usize::MAX, almanac.mappings.len()),
-                SmallVec::<[i64; 7]>::from_elem(0, almanac.mappings.len()),
+                smallvec::SmallVec::<[usize; 7]>::from_elem(usize::MAX, almanac.mappings.len()),
+                smallvec::SmallVec::<[i64; 7]>::from_elem(0, almanac.mappings.len()),
             );
 
             seed_range
