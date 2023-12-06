@@ -12,3 +12,6 @@ rust-crypto = "0.2.36"
 aoc-runner = "0.3.0"
 aoc-runner-derive = "0.3.0"
 indoc = "2.0.4"
+smallvec = { version = "1.11" }
+itertools = "0.12.0"
+rayon = "1.8.0"
