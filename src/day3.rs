@@ -90,28 +90,6 @@ fn is_adjacent(lines: &Vec<Vec<char>>, x: usize, y: usize, dx: i32, dy: i32) -> 
     false
 }
 
-fn sum_multiplied_numbers(schematic: &str) -> i64 {
-    let mut sum = 0;
-    let lines: Vec<Vec<char>> = schematic
-        .lines()
-        .map(|line| line.chars().collect())
-        .collect();
-    let mut visited = vec![vec![false; lines[0].len()]; lines.len()];
-
-    for y in 0..lines.len() {
-        for x in 0..lines[y].len() {
-            if lines[y][x] == '*' {
-                let adjacent_numbers = find_adjacent_numbers(&lines, x, y, &mut visited);
-                if adjacent_numbers.len() == 2 {
-                    let product = adjacent_numbers[0] * adjacent_numbers[1];
-                    sum += product;
-                }
-            }
-        }
-    }
-    sum
-}
-
 fn find_adjacent_numbers(
     lines: &Vec<Vec<char>>,
     x: usize,
