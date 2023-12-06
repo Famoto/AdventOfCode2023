@@ -1,7 +1,7 @@
 # Advent of Code
 
 <p>
-  <a href="https://github.com/Famoto/AdventOfCode2023/actions/workflows/rust.yml">   <img alt="Rust"   src="https://github.com/AndrejOrsula/aoc/actions/workflows/rust.yml/badge.svg"></a>
+  <a href="https://github.com/Famoto/AdventOfCode2023/actions/workflows/rust.yml">   <img alt="Rust"   src="https://github.com/Famoto/AdventOfCode2023/actions/workflows/rust.yml/badge.svg"></a>
 </p>
 
 My solutions to [Advent of Code](https://adventofcode.com) puzzles.
