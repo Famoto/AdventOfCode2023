@@ -5,8 +5,8 @@ use std::ops::Range;
 
 mod utils {
     pub struct Almanac {
-        pub seeds: smallvec::SmallVec<[u64; 20]>,
-        pub mappings: smallvec::SmallVec<[Vec<RangeMap>; 7]>,
+        pub seeds: tinyvec::ArrayVec<[u64; 20]>,
+        pub mappings: tinyvec::ArrayVec<[Vec<RangeMap>; 7]>,
     }
 
     pub struct RangeMap {
@@ -83,8 +83,20 @@ fn part2(almanac: &utils::Almanac) -> u64 {
         .map(|(start, end)| {
             let seed_range = start..end;
             let mut cache = (
-                smallvec::SmallVec::<[usize; 7]>::from_elem(usize::MAX, almanac.mappings.len()),
-                smallvec::SmallVec::<[i64; 7]>::from_elem(0, almanac.mappings.len()),
+                {
+                    let mut vec = tinyvec::ArrayVec::<[usize; 7]>::new();
+                    for _ in 0..almanac.mappings.len() {
+                        vec.push(usize::MAX); // fill with usize::MAX
+                    }
+                    vec
+                },
+                {
+                    let mut vec = tinyvec::ArrayVec::<[i64; 7]>::new();
+                    for _ in 0..almanac.mappings.len() {
+                        vec.push(0); // fill with 0
+                    }
+                    vec
+                },
             );
 
             seed_range
