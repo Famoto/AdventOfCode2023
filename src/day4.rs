@@ -2,11 +2,18 @@ use aoc_runner_derive::{aoc, aoc_generator};
 
 #[aoc_generator(day4)]
 fn parse(input: &str) -> Vec<(Vec<i64>, Vec<i64>)> {
-    input.lines()
+    input
+        .lines()
         .map(|line| {
             let parts: Vec<&str> = line.split(": ").nth(1).unwrap().split(" | ").collect();
-            let winning_numbers = parts[0].split_whitespace().map(|n| n.parse().unwrap()).collect();
-            let my_numbers = parts[1].split_whitespace().map(|n| n.parse().unwrap()).collect();
+            let winning_numbers = parts[0]
+                .split_whitespace()
+                .map(|n| n.parse().unwrap())
+                .collect();
+            let my_numbers = parts[1]
+                .split_whitespace()
+                .map(|n| n.parse().unwrap())
+                .collect();
             (winning_numbers, my_numbers)
         })
         .collect()
@@ -14,21 +21,24 @@ fn parse(input: &str) -> Vec<(Vec<i64>, Vec<i64>)> {
 
 #[aoc(day4, part1)]
 fn part1(input: &[(Vec<i64>, Vec<i64>)]) -> i64 {
-    input.iter().map(|(winning, mine)| {
-        let mut points = 0;
-        let mut has_match = false;
-        for number in mine {
-            if winning.contains(number) {
-                if has_match {
-                    points *= 2;
-                } else {
-                    points = 1;
-                    has_match = true;
+    input
+        .iter()
+        .map(|(winning, mine)| {
+            let mut points = 0;
+            let mut has_match = false;
+            for number in mine {
+                if winning.contains(number) {
+                    if has_match {
+                        points *= 2;
+                    } else {
+                        points = 1;
+                        has_match = true;
+                    }
                 }
             }
-        }
-        points
-    }).sum()
+            points
+        })
+        .sum()
 }
 #[aoc(day4, part2)]
 fn part2(input: &[(Vec<i64>, Vec<i64>)]) -> usize {
@@ -70,5 +80,4 @@ mod tests {
     fn part2_example() {
         assert_eq!(part2(&parse(SAMPLE)), 30);
     }
-
 }

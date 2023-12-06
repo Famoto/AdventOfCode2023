@@ -3,7 +3,7 @@ fn parse(input: &str) -> String {
     input.to_owned()
 }
 
-#[aoc(day1, part1,)]
+#[aoc(day1, part1)]
 fn day1_part1(input: &str) -> u32 {
     let mut sum = 0;
 
@@ -17,8 +17,6 @@ fn day1_part1(input: &str) -> u32 {
             }
         }
     }
-
-    //println!("Sum of numbers: {}", sum);
     sum
 }
 
@@ -55,8 +53,6 @@ fn day1_part2(input: &str) -> u32 {
             }
         }
     }
-
-    //println!("Sum of numbers: {}", sum);
     sum
 }
 #[cfg(test)]

@@ -1,25 +1,20 @@
-
 #[aoc_generator(day2)]
 fn parse(input: &str) -> String {
     input.to_owned()
 }
 #[aoc(day2, part1)]
 fn part1(input: &str) -> i32 {
-
     let mut sum_of_ids = 0;
 
     for line in input.lines() {
-        if let Some((id, game_data)) = parse_line(&line) {
+        if let Some((id, game_data)) = parse_line(line) {
             if is_game_possible(&game_data) {
                 sum_of_ids += id;
             }
         }
     }
-
-    //println!("Sum of IDs: {}", sum_of_ids);
     sum_of_ids
 }
-
 
 fn is_game_possible(sets: &Vec<Vec<(i32, String)>>) -> bool {
     let max_cubes = [("red", 12), ("green", 13), ("blue", 14)];
@@ -39,18 +34,15 @@ fn is_game_possible(sets: &Vec<Vec<(i32, String)>>) -> bool {
 
 #[aoc(day2, part2)]
 fn part2(input: &str) -> i32 {
-
     let mut total_power = 0;
 
     for line in input.lines() {
-        if let Some((_, game_data)) = parse_line(&line) {
+        if let Some((_, game_data)) = parse_line(line) {
             let min_cubes = find_minimum_cubes(&game_data);
             let power = min_cubes.0 * min_cubes.1 * min_cubes.2;
             total_power += power;
         }
     }
-
-    //println!("Total power: {}", total_power);
     total_power
 }
 
@@ -68,7 +60,6 @@ fn parse_line(line: &str) -> Option<(i32, Vec<Vec<(i32, String)>>)> {
 
     Some((id, sets))
 }
-
 
 fn parse_cube(cube_str: &str) -> (i32, String) {
     let parts: Vec<&str> = cube_str.split_whitespace().collect();
@@ -104,7 +95,6 @@ fn find_minimum_cubes(sets: &Vec<Vec<(i32, String)>>) -> (i32, i32, i32) {
 
     (min_red, min_green, min_blue)
 }
-
 
 #[cfg(test)]
 mod tests {
