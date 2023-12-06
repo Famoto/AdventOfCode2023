@@ -1,8 +1,7 @@
 # Advent of Code
 
-<p align="left">
+<p>
   <a href="https://github.com/Famoto/AdventOfCode2023/actions/workflows/rust.yml">   <img alt="Rust"   src="https://github.com/AndrejOrsula/aoc/actions/workflows/rust.yml/badge.svg"></a>
-  <a href="https://github.com/Famoto/AdventOfCode2023/actions/workflows/docker.yml"> <img alt="Docker" src="https://github.com/AndrejOrsula/aoc/actions/workflows/docker.yml/badge.svg"></a>
 </p>
 
 My solutions to [Advent of Code](https://adventofcode.com) puzzles.
