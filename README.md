@@ -19,7 +19,8 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 3 | [Gear Ratios](https://adventofcode.com/2023/day/3)            | [`day3.rs`](src/day3.rs) |
 | 4 | [Scratchcards](https://adventofcode.com/2023/day/4)           | [`day4.rs`](src/day4.rs) |
 | 5 | [If You Give A Seed ...](https://adventofcode.com/2023/day/5) | [`day5.rs`](src/day5.rs) |
-| 6 | [Wait For It](https://adventofcode.com/2023/day/6)            | [`day6.rs`](src/day6.rs) |
+| 6 | [Wait For It](https://adventofcode.com/2023/day/6)| [`day6.rs`](src/day6.rs) |
+| 7 | [Camel Cards](https://adventofcode.com/2023/day/7)| [`day7.rs`](src/day7.rs) |
 
 </td><td>
 
@@ -31,17 +32,19 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 228.981 µs | 28.705 µs  |
 | 182.395 µs |  6.131 µs  |
 |  2.585 µs  |   200 ns   |
+| 152.017 µs | 82.666 µs  |
 
 </td><td>
 
-| Generator |   Runner   |
-|:---------:|:----------:|
-| 1.583 µs  |  1.228 ms  |
-| 1.032 µs  | 170.803 µs |
-|  791 ns   | 113.365 µs |
-| 185.64 µs | 904.499 ms |
-| 18.124 µs |  3.927 s   |
-| 1.834 µs  |  2.573 ms  |
+| Generator  |   Runner   |
+|:----------:|:----------:|
+|  1.583 µs  |  1.228 ms  |
+|  1.032 µs  | 170.803 µs |
+|   791 ns   | 113.365 µs |
+| 185.64 µs  | 904.499 ms |
+| 18.124 µs  |  3.927 s   |
+|  1.834 µs  |  2.573 ms  |
+| 173.628 µs | 72.858 µs  |
 
 </td></tr>
 </table>
@@ -69,4 +72,4 @@ cargo test
 
 </details>
 
-### Readme Template from [AndrejOrsula](https://github.com/AndrejOrsula/aoc)
+### Templates and Structure from [AndrejOrsula](https://github.com/AndrejOrsula/aoc)
