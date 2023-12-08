@@ -1,130 +1,146 @@
 use aoc_runner_derive::{aoc, aoc_generator};
-use std::collections::HashMap;
+use num_integer::lcm;
 
-// Node structure
-type Node = (String, String);
-// Map for the network
-type Network = HashMap<String, Node>;
+mod utils {
+    pub struct Network {
+        pub steps: Vec<usize>,
+        pub map: std::collections::HashMap<String, [String; 2]>,
+    }
+}
 
-#[aoc_generator(day8, part1)]
-fn parse1(input: &str) -> (Network, Vec<char>) {
-    let mut network = Network::new();
-    let mut instructions = Vec::new();
-    let mut first_line = true;
+#[aoc_generator(day8)]
+fn parse(input: &str) -> utils::Network {
+    use itertools::Itertools;
 
-    for line in input.lines() {
-        if line.trim().is_empty() {
-            continue;
-        }
-
-        if first_line {
-            instructions.extend(line.chars());
-            first_line = false;
-        } else {
-            let parts: Vec<&str> = line.split(" = ").collect();
-            let key = parts[0].to_string();
-            let values: Vec<&str> = parts[1][1..parts[1].len() - 1].split(", ").collect();
-            network.insert(key, (values[0].to_string(), values[1].to_string()));
-        }
+    let mut lines = input.lines();
+    let steps = lines
+        .next()
+        .unwrap()
+        .chars()
+        .map(|c| match c {
+            'L' => 0,
+            'R' => 1,
+            _ => panic!("Invalid input"),
+        })
+        .collect();
+    let mut map = std::collections::HashMap::new();
+    for line in lines.skip(1) {
+        let (key, steps) = line.split('=').collect_tuple().unwrap();
+        let key = key.trim().to_string();
+        let (left, right) = steps
+            .split(',')
+            .map(|s| {
+                s.chars()
+                    .filter(|c| c.is_alphanumeric())
+                    .collect::<String>()
+            })
+            .collect_tuple()
+            .unwrap();
+        map.insert(key, [left, right]);
     }
 
-    (network, instructions)
+    utils::Network { steps, map }
 }
 
 #[aoc(day8, part1)]
-fn part1(input: &(Network, Vec<char>)) -> u64 {
-    let (network, instructions) = input;
+fn part1(network: &utils::Network) -> u64 {
     let mut current_node = "AAA".to_string();
-    let mut step_count = 0u64;
+    let mut count = 0;
 
-    let mut instruction_pointer = 0;
-    while current_node != "ZZZ" {
-        let (left, right) = &network[&current_node];
-        current_node = if instructions[instruction_pointer] == 'L' {
-            left
-        } else {
-            right
+    for step in network.steps.iter().cycle() {
+        count += 1;
+        current_node = network.map[&current_node][*step].clone();
+        if current_node == "ZZZ" {
+            break;
         }
-        .to_string();
-
-        step_count += 1;
-        instruction_pointer = (instruction_pointer + 1) % instructions.len();
     }
 
-    step_count
-}
-#[aoc_generator(day8, part2)]
-fn parse2(input: &str) -> (Network, Vec<char>) {
-    let (network, instructions) = parse1(input); // Reusing the parse1 function
-    (network, instructions)
+    count
 }
 
 #[aoc(day8, part2)]
-fn part2(input: &(Network, Vec<char>)) -> u64 {
-    let (network, instructions) = input;
-    let mut current_nodes: Vec<String> = network
+fn part2(network: &utils::Network) -> u64 {
+    use part2_utils::Path;
+
+    let mut paths: Vec<Path> = network
+        .map
         .keys()
-        .filter(|&k| k.ends_with('A'))
-        .cloned()
+        .filter(|k| k.ends_with('A'))
+        .map(|k| Path::new(k))
         .collect();
-    let mut step_count = 0u64;
 
-    while !current_nodes.iter().all(|node| node.ends_with('Z')) {
-        let mut next_nodes = Vec::new();
+    let mut step_counter = 0;
+    let mut paths_in_progress: Vec<usize> = (0..paths.len()).collect();
 
-        for node in &current_nodes {
-            let (left, right) = &network[node];
-            // Convert step_count to usize for indexing
-            let instruction_index = (step_count as usize) % instructions.len();
-            let next_node = if instructions[instruction_index] == 'L' {
-                left
-            } else {
-                right
-            };
-            next_nodes.push(next_node.clone());
+    while !paths_in_progress.is_empty() {
+        for &path_index in &paths_in_progress.clone() {
+            let path = &mut paths[path_index];
+            path.current_node = network.map[&path.current_node]
+                [network.steps[step_counter % network.steps.len()]]
+            .clone();
+            if path.current_node.ends_with('Z') {
+                path.steps_taken = (step_counter + 1) as u64;
+                paths_in_progress.retain(|&i| i != path_index);
+            }
         }
-
-        current_nodes = next_nodes;
-        step_count += 1;
+        step_counter += 1;
     }
 
-    step_count
+    paths.iter().fold(0, |acc, path| {
+        if acc == 0 {
+            path.steps_taken
+        } else {
+            lcm(acc, path.steps_taken)
+        }
+    })
 }
 
+mod part2_utils {
+    pub struct Path {
+        pub current_node: String,
+        pub steps_taken: u64,
+    }
+
+    impl Path {
+        pub fn new(node: &String) -> Self {
+            Self {
+                current_node: node.clone(),
+                steps_taken: 0,
+            }
+        }
+    }
+}
 #[cfg(test)]
 mod tests {
     use super::*;
     use indoc::indoc;
 
-    const SAMPLE1: &str = indoc! {"RL
-
-AAA = (BBB, CCC)
-BBB = (DDD, EEE)
-CCC = (ZZZ, GGG)
-DDD = (DDD, DDD)
-EEE = (EEE, EEE)
-GGG = (GGG, GGG)
-ZZZ = (ZZZ, ZZZ)"};
-
-    const SAMPLE2: &str = indoc! {"LR
-
-11A = (11B, XXX)
-11B = (XXX, 11Z)
-11Z = (11B, XXX)
-22A = (22B, XXX)
-22B = (22C, 22C)
-22C = (22Z, 22Z)
-22Z = (22B, 22B)
-XXX = (XXX, XXX)"};
-
     #[test]
     fn part1_example() {
-        let parsed_input = parse1(SAMPLE1);
-        assert_eq!(part1(&parsed_input), 2);
+        const SAMPLE: &str = indoc! {"
+            LLR
+
+            AAA = (BBB, BBB)
+            BBB = (AAA, ZZZ)
+            ZZZ = (ZZZ, ZZZ)
+        "};
+        assert_eq!(part1(&parse(SAMPLE)), 6);
     }
+
     #[test]
     fn part2_example() {
-        let parsed_input = parse2(SAMPLE2);
-        assert_eq!(part2(&parsed_input), 6);
+        const SAMPLE: &str = indoc! {"
+            LR
+
+            11A = (11B, XXX)
+            11B = (XXX, 11Z)
+            11Z = (11B, XXX)
+            22A = (22B, XXX)
+            22B = (22C, 22C)
+            22C = (22Z, 22Z)
+            22Z = (22B, 22B)
+            XXX = (XXX, XXX)
+        "};
+        assert_eq!(part2(&parse(SAMPLE)), 6);
     }
 }
