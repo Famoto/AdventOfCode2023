@@ -83,7 +83,6 @@ pub fn part2(data: &str) -> Option<usize> {
 mod tests {
     use super::*;
     use indoc::indoc;
-    use pretty_assertions::assert_eq;
 
     static EXAMPLE_1: &str = indoc! {"
         -L|F7
