@@ -61,23 +61,6 @@ mod utils {
         expand_universe(&galaxies, &expanding_rows, &expanding_cols, expansion_rate)
     }
 
-    pub fn sum_galactic_distances(galaxies: &[(usize, usize)]) -> usize {
-        use itertools::Itertools;
-        galaxies
-            .iter()
-            .combinations(2)
-            .map(|pair| {
-                // Manhattan distance
-                let (galaxy_a, galaxy_b) = (pair[0], pair[1]);
-                let (dx, dy) = (
-                    galaxy_a.0.abs_diff(galaxy_b.0),
-                    galaxy_a.1.abs_diff(galaxy_b.1),
-                );
-                dx + dy
-            })
-            .sum()
-    }
-
     fn find_expanding_rows(input: &str) -> Vec<usize> {
         input
             .lines()
