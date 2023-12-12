@@ -12,16 +12,19 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 <tr><th>Day</th><th>Part 1 Performance</th><th>Part 2 Performance</th></tr>
 <tr><td>
 
-| D | Puzzle                                                        |           Code           |
-|:-:|---------------------------------------------------------------|:------------------------:|
-| 1 | [Trebuchet?!](https://adventofcode.com/2023/day/1)            | [`day1.rs`](src/day1.rs) |
-| 2 | [Cube Conundrum](https://adventofcode.com/2023/day/2)         | [`day2.rs`](src/day2.rs) |
-| 3 | [Gear Ratios](https://adventofcode.com/2023/day/3)            | [`day3.rs`](src/day3.rs) |
-| 4 | [Scratchcards](https://adventofcode.com/2023/day/4)           | [`day4.rs`](src/day4.rs) |
-| 5 | [If You Give A Seed ...](https://adventofcode.com/2023/day/5) | [`day5.rs`](src/day5.rs) |
-| 6 | [Wait For It](https://adventofcode.com/2023/day/6)            | [`day6.rs`](src/day6.rs) |
-| 7 | [Camel Cards](https://adventofcode.com/2023/day/7)            | [`day7.rs`](src/day7.rs) |
-| 7 | [Haunted Wasteland](https://adventofcode.com/2023/day/8)      | [`day8.rs`](src/day8.rs) |
+| D  | Puzzle                                                        |            Code            |
+|:--:|---------------------------------------------------------------|:--------------------------:|
+| 1  | [Trebuchet?!](https://adventofcode.com/2023/day/1)            |  [`day1.rs`](src/day1.rs)  |
+| 2  | [Cube Conundrum](https://adventofcode.com/2023/day/2)         |  [`day2.rs`](src/day2.rs)  |
+| 3  | [Gear Ratios](https://adventofcode.com/2023/day/3)            |  [`day3.rs`](src/day3.rs)  |
+| 4  | [Scratchcards](https://adventofcode.com/2023/day/4)           |  [`day4.rs`](src/day4.rs)  |
+| 5  | [If You Give A Seed ...](https://adventofcode.com/2023/day/5) |  [`day5.rs`](src/day5.rs)  |
+| 6  | [Wait For It](https://adventofcode.com/2023/day/6)            |  [`day6.rs`](src/day6.rs)  |
+| 7  | [Camel Cards](https://adventofcode.com/2023/day/7)            |  [`day7.rs`](src/day7.rs)  |
+| 8  | [Haunted Wasteland](https://adventofcode.com/2023/day/8)      |  [`day8.rs`](src/day8.rs)  |
+| 9  | [Mirage Maintenance](https://adventofcode.com/2023/day/9)     |  [`day9.rs`](src/day9.rs)  |
+| 10 | [Pipe Maze](https://adventofcode.com/2023/day/10)             | [`day10.rs`](src/day10.rs) |
+| 11 | [Cosmic Expansion](https://adventofcode.com/2023/day/11)      | [`day11.rs`](src/day11.rs) |
 
 </td><td>
 
@@ -35,6 +38,9 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  2.585 µs  |   200 ns   |
 | 152.017 µs | 82.666 µs  |
 | 247.347 µs | 411.467 µs |
+| 98.776 µs  | 76.014 µs  |
+|     --     | 398.804 µs |
+|  7.920 ms  |  2.182 ms  |
 
 </td><td>
 
@@ -48,6 +54,9 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  1.834 µs  |  2.573 ms  |
 | 173.628 µs | 72.858 µs  |
 | 164.029 µs | 4.0248 ms  |
+|  89.86 µs  | 77.827 µs  |
+|    ---     | 242.098 µs |
+|  8.363 ms  |  2.124 ms  |
 
 </td></tr>
 </table>
