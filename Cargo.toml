@@ -12,7 +12,7 @@ indoc = "2.0.4"
 itertools = "0.12.0"
 rayon = "1.8.0"
 tinyvec = "1.6.0"
-strum = { version = "0.25", features = ["derive"] }
+strum = { version = "0.26", features = ["derive"] }
 arrayvec = "0.7.4"
 num-integer = { version = "0.1.45", features = [] }
 static_init = "1.0"
