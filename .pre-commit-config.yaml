@@ -25,12 +25,6 @@ repos:
     hooks:
       - id: beautysh
 
-  - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
-    hooks:
-      - id: codespell
-        args: ["--ignore-words-list", "crate"]
-        exclude: Cargo.lock, /input/
 
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.17
