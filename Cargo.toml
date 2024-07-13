@@ -22,6 +22,7 @@ pathfinding = { version = "4.4" }
 petgraph = { version = "0.6" }
 rustc-hash = { version = "2.0" }
 rustworkx-core = { version = "0.14" }
+
 smallvec = { version = "1.11" }
 
 [features]
