@@ -19,7 +19,7 @@ static_init = "1.0"
 derive_more = { version = "2.0", features = ["full"] }
 num = { version = "0.4" }
 pathfinding = { version = "4.4" }
-petgraph = { version = "0.6" }
+petgraph = { version = "0.7" }
 rustc-hash = { version = "2.0" }
 rustworkx-core = { version = "0.15" }
 
